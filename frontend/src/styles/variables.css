@@ -1,0 +1,19 @@
+:root {
+  /* Brand colours from the KINETICS logo sheet */
+  --color-primary: #03329c;
+  --color-accent: #92b3ff;
+  --color-dark: #111827;
+  --color-light: #dfeafe;
+  --color-text: #374151;
+
+  /* Spacing scale, from small to large */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 3rem;
+  --space-5: 5rem;
+
+  /* Shared shape and page width */
+  --radius: 8px;
+  --max-width: 1200px;
+}
