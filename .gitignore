@@ -1,4 +1,3 @@
-
 # Dependencies
 node_modules/
 frontend/node_modules/
@@ -42,3 +41,8 @@ Desktop.ini
 # Temporary files
 *.tmp
 *.temp
+
+# Private notes and documentation
+private-notes/
+
+
