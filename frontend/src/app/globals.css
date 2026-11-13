@@ -1,0 +1,88 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --color-white: #FFFFFF;
+  --color-navy: #091737;
+  --color-brand: #03329C;
+  --color-accent: #2463FF;
+  --color-copper: #C4622D;
+  --color-glow: #FFE7C2;
+  --color-bg: #F3F1EC;
+  --page-bg: linear-gradient(180deg, #E2EFFF 0%, #E6F1FF 100%);
+  --glass-light-bg: rgba(255, 255, 255, 0.62);
+  --glass-light-blur: blur(22px) saturate(140%);
+  --glass-light-border: 1px solid rgba(255, 255, 255, 0.70);
+  --glass-light-shadow: 0 8px 32px rgba(9, 23, 55, 0.08);
+  --glass-dark-bg: rgba(255, 255, 255, 0.08);
+  --glass-dark-blur: blur(22px) saturate(140%);
+  --glass-dark-border: 1px solid rgba(255, 255, 255, 0.16);
+  --radius-card: 28px;
+  --radius-field: 16px;
+  --radius-pill: 999px;
+  --font-display: var(--font-display, 'Bricolage Grotesque', sans-serif);
+  --font-mono: var(--font-mono, 'JetBrains Mono', monospace);
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  overflow-x: clip;
+  background: var(--page-bg);
+  background-attachment: fixed;
+  color: #091737;
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+main {
+  min-height: 300vh;
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  main {
+    min-height: auto;
+  }
+}
+html {
+  scroll-behavior: smooth;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+[data-intro-overlay] {
+  display: none;
+}
+
+html.intro-pending [data-intro-overlay] {
+  display: flex;
+}
+html.intro-pending [data-nav-mark] {
+  visibility: hidden;
+}
+
+html.intro-pending [data-nav-wordmark] {
+  opacity: 0;
+}
