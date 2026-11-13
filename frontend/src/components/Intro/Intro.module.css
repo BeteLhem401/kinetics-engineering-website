@@ -1,0 +1,27 @@
+.introOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--page-bg);
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  overflow: hidden;
+  will-change: opacity;
+}
+.markWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
+  transform-origin: center center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .introOverlay {
+    display: none !important;
+  }
+}
+

@@ -1,0 +1,517 @@
+.projectsSection {
+  position: relative;
+  width: 100%;
+  padding: 100px 0 120px;
+  background: transparent;
+  box-sizing: border-box;
+  overflow-x: clip;
+  outline: none;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.header {
+  text-align: center;
+  margin-bottom: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono, monospace);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-brand, #03329C);
+}
+
+.heading {
+  font-family: var(--font-display, var(--font-sans, sans-serif));
+  font-size: clamp(32px, 4.5vw, 48px);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: var(--color-navy, #091737);
+  margin: 0;
+}
+.carouselStage {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  height: clamp(260px, 52vh, 480px);
+  contain: layout paint;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  touch-action: pan-y;
+  cursor: grab;
+}
+
+.carouselStage:active {
+  cursor: grabbing;
+}
+.card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  box-sizing: border-box;
+  background: transparent;
+  overflow: visible;
+  transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
+              width 700ms cubic-bezier(0.22, 1, 0.36, 1),
+              height 700ms cubic-bezier(0.22, 1, 0.36, 1),
+              border-radius 700ms cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, width, height, opacity;
+}
+.reducedMotion {
+  transition: opacity 250ms ease !important;
+}
+.cardBody {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(9, 23, 55, 0.08);
+  border: 1px solid rgba(9, 23, 55, 0.08);
+  box-sizing: border-box;
+}
+
+.cardCenter .cardBody {
+  border-color: rgba(9, 23, 55, 0.1);
+  box-shadow: 0 16px 44px rgba(9, 23, 55, 0.1);
+}
+.cardCapsule .cardBody {
+  padding: 8px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.capsuleContent {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--inner-radius, 16px);
+  overflow: hidden;
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: #ffffff;
+  cursor: pointer;
+  outline: none;
+  display: block;
+  transition: opacity 350ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.capsuleContent:focus-visible {
+  outline: 2px solid var(--color-brand, #03329C);
+  outline-offset: 2px;
+}
+
+.capsuleImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: inherit;
+}
+.bigCardContent {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 440px;
+  min-width: 440px;
+  max-width: 440px;
+  height: clamp(260px, 52vh, 480px);
+  transform: translateX(-50%);
+  padding: 24px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  transition: opacity 350ms cubic-bezier(0.22, 1, 0.36, 1);
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.bigCardLink {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+}
+
+.bigCardLink:focus-visible {
+  outline: 2px solid var(--color-brand, #03329C);
+  outline-offset: 4px;
+  border-radius: 20px;
+}
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.statusPill {
+  display: inline-flex;
+  align-items: center;
+  background: var(--color-navy, #091737);
+  color: #ffffff;
+  font-family: var(--font-sans, sans-serif);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 9999px;
+  letter-spacing: 0.02em;
+}
+
+.cityBadge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  overflow: hidden;
+  border: 1px solid rgba(9, 23, 55, 0.14);
+  background: #ffffff;
+  font-family: var(--font-sans, sans-serif);
+}
+
+.cityLabel {
+  background: var(--color-navy, #091737);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 4px 8px;
+  text-transform: uppercase;
+}
+
+.cityName {
+  color: var(--color-navy, #091737);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  background: rgba(9, 23, 55, 0.04);
+}
+.cardTitle {
+  font-family: var(--font-display, var(--font-sans, sans-serif));
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--color-navy, #091737);
+  margin: 0 0 6px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 58px;
+}
+
+.cardScope {
+  font-family: var(--font-sans, sans-serif);
+  font-size: 14px;
+  line-height: 1.4;
+  color: rgba(9, 23, 55, 0.55);
+  margin: 0 0 16px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.photoContainer {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  border-radius: 22px;
+  overflow: hidden;
+  background: rgba(9, 23, 55, 0.04);
+}
+
+.bigPhoto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.photoOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(9, 23, 55, 0.88) 0%, rgba(9, 23, 55, 0.4) 40%, transparent 75%);
+  pointer-events: none;
+}
+.illustrativeBadge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(9, 23, 55, 0.65);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #ffffff;
+  font-family: var(--font-sans, sans-serif);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  z-index: 2;
+  letter-spacing: 0.02em;
+}
+.photoBottomLeft {
+  position: absolute;
+  bottom: 16px;
+  left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  z-index: 2;
+  color: #ffffff;
+}
+
+.clientRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pinIcon {
+  color: #ffffff;
+  opacity: 0.9;
+  flex-shrink: 0;
+}
+
+.clientName {
+  font-family: var(--font-sans, sans-serif);
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.clientLocation {
+  font-family: var(--font-sans, sans-serif);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.8);
+  padding-left: 20px;
+}
+.arrowButton {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(9, 23, 55, 0.16);
+  transition: transform 250ms cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 2;
+}
+.cardCenter:hover .arrowButton {
+  transform: translateX(4px);
+}
+.bridgeJoint {
+  position: absolute;
+  top: 50%;
+  left: calc(100% - 2px);
+  width: 28px;
+  height: 32px;
+  transform: translateY(-50%);
+  z-index: 4;
+  pointer-events: none;
+  transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bridgeSvg {
+  display: block;
+  width: 28px;
+  height: 32px;
+  filter: drop-shadow(0 4px 8px rgba(9, 23, 55, 0.05));
+}
+.placeholderBig,
+.placeholderCapsule {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: linear-gradient(135deg, var(--color-brand, #03329C) 0%, var(--color-navy, #091737) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.gridPattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+}
+
+.bgNumber {
+  font-family: var(--font-mono, monospace);
+  font-size: 72px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.14);
+  line-height: 1;
+  user-select: none;
+}
+
+.capsuleNum {
+  font-family: var(--font-mono, monospace);
+  font-size: 20px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.3);
+  line-height: 1;
+  user-select: none;
+}
+.bottomControls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.navButton {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(9, 23, 55, 0.12);
+  background: #ffffff;
+  color: var(--color-navy, #091737);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 200ms ease, border-color 200ms ease, transform 200ms ease;
+  outline: none;
+}
+
+.navButton:hover {
+  background: rgba(9, 23, 55, 0.04);
+  border-color: rgba(9, 23, 55, 0.2);
+  transform: scale(1.05);
+}
+
+.navButton:focus-visible {
+  outline: 2px solid var(--color-brand, #03329C);
+  outline-offset: 2px;
+}
+
+.dotsWrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: rgba(9, 23, 55, 0.2);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: width 300ms cubic-bezier(0.22, 1, 0.36, 1), background 300ms ease;
+  outline: none;
+}
+
+.dot:hover {
+  background: rgba(9, 23, 55, 0.4);
+}
+
+.dot:focus-visible {
+  outline: 2px solid var(--color-brand, #03329C);
+  outline-offset: 2px;
+}
+
+.dotActive {
+  width: 24px;
+  background: var(--color-brand, #03329C);
+}
+
+.counter {
+  font-family: var(--font-mono, monospace);
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(9, 23, 55, 0.65);
+  letter-spacing: 0.06em;
+  min-width: 58px;
+  text-align: center;
+  user-select: none;
+}
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+@media (max-width: 767px) {
+  .projectsSection {
+    padding: 72px 0 80px;
+  }
+
+  .header {
+    margin-bottom: 36px;
+  }
+
+  .carouselStage {
+    height: clamp(260px, 52vh, 480px);
+  }
+
+  .bridgeJoint {
+    display: none;
+  }
+
+  .bigCardContent {
+    width: min(82vw, 340px);
+    min-width: min(82vw, 340px);
+    max-width: min(82vw, 340px);
+    height: clamp(260px, 52vh, 480px);
+    padding: 20px;
+  }
+
+  .cardTitle {
+    font-size: 20px;
+    line-height: 1.2;
+    height: 48px;
+  }
+
+  .cardScope {
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+
+  .bottomControls {
+    margin-top: 32px;
+    gap: 16px;
+  }
+}

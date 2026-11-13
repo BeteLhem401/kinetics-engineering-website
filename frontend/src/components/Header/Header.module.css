@@ -1,0 +1,244 @@
+.headerContainer {
+  position: fixed;
+  top: 10px;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  width: min(1152px, calc(100% - 24px));
+  z-index: 1000;
+  pointer-events: none;
+}
+.headerPill {
+  pointer-events: auto;
+  width: 100%;
+  height: 58px;
+  background-color: #F9FCFF;
+  border-radius: 29px;
+  box-shadow: 0 4px 20px rgba(9, 23, 55, 0.05), 0 1px 3px rgba(9, 23, 55, 0.03);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px 0 28px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-sizing: border-box;
+}
+.leftCluster {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.rightCluster {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.menuButton {
+  display: none;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border-radius: 50%;
+  color: #091737;
+  transition: background-color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.menuButton:hover {
+  background-color: rgba(9, 23, 55, 0.05);
+}
+
+.menuButton:focus-visible {
+  outline: 2px solid #2463FF;
+  outline-offset: 2px;
+}
+
+.hamburgerLine {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: #091737;
+  border-radius: 1px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.logoWrap {
+  display: flex;
+  align-items: center;
+}
+
+.logoLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.navMarkImg {
+  display: block;
+  width: 35px;
+  height: 36.4px;
+  flex-shrink: 0;
+}
+
+.wordmarkImg {
+  display: block;
+  height: 13px;
+  width: auto;
+}
+.navMenu {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.navLink {
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6F809A;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  line-height: 1;
+}
+
+.navLink:hover {
+  color: #091737;
+}
+.navLinkActive {
+  background-color: #091737;
+  color: #FFFFFF !important;
+}
+.ctaWrap {
+  display: flex;
+  align-items: center;
+}
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #091737;
+  color: #FFFFFF;
+  text-decoration: none;
+  padding: 8px 10px 8px 20px;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.ctaButton:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+.arrowCircle {
+  width: 24px;
+  height: 24px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.dropdownPanel {
+  pointer-events: auto;
+  margin-top: 8px;
+  width: 100%;
+  background-color: #F9FCFF;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 30px rgba(9, 23, 55, 0.08), 0 2px 6px rgba(9, 23, 55, 0.04);
+  padding: 8px;
+  box-sizing: border-box;
+  animation: dropdownFade 0.2s ease-out;
+}
+
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdownNav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.dropdownLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 44px;
+  padding: 12px 18px;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #091737;
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  box-sizing: border-box;
+}
+
+.dropdownLink:hover {
+  background-color: rgba(9, 23, 55, 0.05);
+}
+
+.dropdownLinkActive {
+  background-color: #091737;
+  color: #FFFFFF !important;
+  font-weight: 600;
+}
+
+.activeDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #2463FF;
+}
+@media (max-width: 899px) {
+  .headerContainer {
+    top: 12px;
+  }
+
+  .headerPill {
+    height: 54px;
+    padding: 0 8px 0 6px;
+    border-radius: 27px;
+  }
+
+  .menuButton {
+    display: flex;
+  }
+
+  .navMenu {
+    display: none;
+  }
+
+  .leftCluster {
+    gap: 4px;
+  }
+
+  .ctaButton {
+    padding: 6px 8px 6px 14px;
+    font-size: 13px;
+    gap: 6px;
+  }
+
+  .arrowCircle {
+    width: 20px;
+    height: 20px;
+  }
+}

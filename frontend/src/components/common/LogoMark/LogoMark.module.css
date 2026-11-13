@@ -1,0 +1,84 @@
+.mark { display: block; overflow: visible; }
+
+.half {
+  fill: var(--color-brand, #03329C);
+  animation-duration: 700ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-fill-mode: both;
+}
+.left  { animation-name: fromLeft; }
+.right { animation-name: fromRight; }
+@keyframes fromLeft  { from { transform: translateX(-22px); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes fromRight { from { transform: translateX(22px);  opacity: 0; } to { transform: none; opacity: 1; } }
+.body, .spill, .hot {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation-duration: 1000ms;
+  animation-delay: 700ms;
+  animation-fill-mode: both;
+}
+.body { fill: var(--color-copper, #C4622D); animation-name: bodyOn; animation-timing-function: ease-out; }
+@keyframes bodyOn {
+  0%   { transform: scaleY(0.12); opacity: 0; }
+  22%  { transform: scaleY(1);    opacity: 1; }
+  38%  { transform: scaleY(1);    opacity: 0.5; }
+  52%  { transform: scaleY(1);    opacity: 1; }
+  75%  { transform: scaleY(1);    opacity: 0.7; }
+  100% { transform: scaleY(1);    opacity: 0.55; }
+}
+.spill { fill: var(--color-copper, #C4622D); mix-blend-mode: screen; animation-timing-function: ease-in-out; }
+.wide  { animation-name: spillWide; }
+.tight { animation-name: spillTight; }
+@keyframes spillWide  { 0% { opacity: 0; } 22% { opacity: 0.35; } 38% { opacity: 0.12; } 52% { opacity: 0.8; } 75% { opacity: 0.5; } 100% { opacity: 0.5; } }
+@keyframes spillTight { 0% { opacity: 0; } 22% { opacity: 0.6; }  38% { opacity: 0.2; }  52% { opacity: 1; }   75% { opacity: 0.7; } 100% { opacity: 0.7; } }
+.hot { fill: var(--color-glow, #FFE7C2); animation-name: hotOn; animation-timing-function: ease-out; }
+@keyframes hotOn {
+  0%   { transform: scaleY(0.12); opacity: 0; }
+  22%  { transform: scaleY(1);    opacity: 1; }
+  38%  { transform: scaleY(1);    opacity: 0.3; }
+  52%  { transform: scaleY(1);    opacity: 1; }
+  75%  { transform: scaleY(1);    opacity: 0.85; }
+  100% { transform: scaleY(1);    opacity: 0.8; }
+}
+.still .half  { animation: none; }
+.still .body  { animation: none; opacity: 0.55; }
+.still .wide  { animation: none; opacity: 0.5; }
+.still .tight { animation: none; opacity: 0.7; }
+.still .hot   { animation: none; opacity: 0.8; }
+.lightOff .body {
+  animation: bodyOut 350ms ease-out forwards;
+}
+.lightOff .wide {
+  animation: spillWideOut 350ms ease-out forwards;
+}
+.lightOff .tight {
+  animation: spillTightOut 350ms ease-out forwards;
+}
+.lightOff .hot {
+  animation: hotOut 350ms ease-out forwards;
+}
+
+@keyframes bodyOut {
+  from { opacity: 0.55; }
+  to   { opacity: 0; }
+}
+@keyframes spillWideOut {
+  from { opacity: 0.5; }
+  to   { opacity: 0; }
+}
+@keyframes spillTightOut {
+  from { opacity: 0.7; }
+  to   { opacity: 0; }
+}
+@keyframes hotOut {
+  from { opacity: 0.8; }
+  to   { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .half  { animation: none; }
+  .body  { animation: none; opacity: 0.55; }
+  .wide  { animation: none; opacity: 0.5; }
+  .tight { animation: none; opacity: 0.7; }
+  .hot   { animation: none; opacity: 0.8; }
+}
