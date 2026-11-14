@@ -1,16 +1,23 @@
-.introOverlay {
+.introBackdrop {
   position: fixed;
   inset: 0;
-  z-index: 9999;
+  z-index: 9998;
   background: var(--page-bg);
   background-attachment: fixed;
+  pointer-events: auto;
+  will-change: opacity;
+}
+
+.logoLayer {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  pointer-events: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  pointer-events: auto;
-  overflow: hidden;
-  will-change: opacity;
 }
+
 .markWrap {
   display: flex;
   align-items: center;
@@ -20,8 +27,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .introOverlay {
+  .introBackdrop,
+  .logoLayer {
     display: none !important;
   }
 }
-

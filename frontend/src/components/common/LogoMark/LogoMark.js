@@ -20,8 +20,10 @@ export default function LogoMark({
   const uid = useId().replace(/:/g, '');
 
   useEffect(() => {
-    hasPlayed = true; 
-  }, []);
+    if (animate) {
+      hasPlayed = true;
+    }
+  }, [animate]);
 
   const replay = () => {
     if (!animate || !replayOnHover) return;
