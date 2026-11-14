@@ -80,7 +80,9 @@
 }
 
 .navMarkImg {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 35px;
   height: 36.4px;
   flex-shrink: 0;

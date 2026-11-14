@@ -45,6 +45,16 @@
 .still .wide  { animation: none; opacity: 0.5; }
 .still .tight { animation: none; opacity: 0.7; }
 .still .hot   { animation: none; opacity: 0.8; }
+.still.lightOff .half {
+  animation: none;
+}
+.still.lightOff .body,
+.still.lightOff .wide,
+.still.lightOff .tight,
+.still.lightOff .hot {
+  animation: none;
+  opacity: 0;
+}
 .lightOff .body {
   animation: bodyOut 350ms ease-out forwards;
 }

@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import { homeData } from '@/data/home';
 import { navigateTo } from '@/lib/navigation';
+import LogoMark from '@/components/common/LogoMark/LogoMark';
 import styles from './Header.module.css';
 
 export default function Header() {
@@ -94,14 +95,9 @@ export default function Header() {
               onClick={(e) => handleNavClick(e, 'Home')}
               className={styles.logoLink}
             >
-              <img
-                src="/images/logo/logo-mark.svg"
-                alt=""
-                width={35}
-                height={36.4}
-                className={styles.navMarkImg}
-                data-nav-mark
-              />
+              <span className={styles.navMarkImg} data-nav-mark>
+                <LogoMark size={35} animate={false} lightOff={true} decorative={true} />
+              </span>
               <img
                 src="/images/logo/logo-wordmark-black.svg"
                 alt=""

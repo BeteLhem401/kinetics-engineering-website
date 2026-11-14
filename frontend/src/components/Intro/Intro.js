@@ -10,7 +10,8 @@ export default function Intro() {
   const [isDone, setIsDone] = useState(false);
   const [introSize, setIntroSize] = useState(200);
 
-  const overlayRef = useRef(null);
+  const backdropRef = useRef(null);
+  const logoLayerRef = useRef(null);
   const markWrapRef = useRef(null);
   const isSkippingRef = useRef(false);
   const isDoneRef = useRef(false);
@@ -29,6 +30,10 @@ export default function Intro() {
         try {
           sessionStorage.setItem('kinetics_intro_seen', '1');
         } catch (e) {}
+        const navMarkEl = document.querySelector('[data-nav-mark]');
+        if (navMarkEl) {
+          navMarkEl.style.visibility = 'visible';
+        }
         document.documentElement.classList.remove('intro-pending');
         document.documentElement.style.overflow = '';
         setIsDone(true);
@@ -52,6 +57,10 @@ export default function Intro() {
       try {
         sessionStorage.setItem('kinetics_intro_seen', '1');
       } catch (e) {}
+      const navMarkEl = document.querySelector('[data-nav-mark]');
+      if (navMarkEl) {
+        navMarkEl.style.visibility = 'visible';
+      }
       document.documentElement.classList.remove('intro-pending');
       document.documentElement.style.overflow = '';
       setIsDone(true);
@@ -67,15 +76,25 @@ export default function Intro() {
       isSkippingRef.current = true;
       clearTimers();
 
-      if (overlayRef.current) {
-        const anim = overlayRef.current.animate(
+      if (backdropRef.current) {
+        const anim = backdropRef.current.animate(
           [{ opacity: 1 }, { opacity: 0 }],
           { duration: 200, easing: 'ease-out', fill: 'forwards' }
         );
         runningAnimationsRef.current.push(anim);
-        anim.onfinish = finish;
-      } else {
-        finish();
+      }
+
+      if (logoLayerRef.current) {
+        const anim = logoLayerRef.current.animate(
+          [{ opacity: 1 }, { opacity: 0 }],
+          { duration: 200, easing: 'ease-out', fill: 'forwards' }
+        );
+        runningAnimationsRef.current.push(anim);
+      }
+
+      const navMarkEl = document.querySelector('[data-nav-mark]');
+      if (navMarkEl) {
+        navMarkEl.style.visibility = 'visible';
       }
 
       const wordmarkEl = document.querySelector('[data-nav-wordmark]');
@@ -86,6 +105,9 @@ export default function Intro() {
         );
         runningAnimationsRef.current.push(wAnim);
       }
+
+      const tSkipDone = setTimeout(finish, 200);
+      timersRef.current.push(tSkipDone);
     };
 
     const handleSkipEvent = () => {
@@ -108,9 +130,9 @@ export default function Intro() {
 
       const navMarkEl = document.querySelector('[data-nav-mark]');
       const markWrapEl = markWrapRef.current;
-      const overlayEl = overlayRef.current;
+      const backdropEl = backdropRef.current;
 
-      if (!navMarkEl || !markWrapEl || !overlayEl) {
+      if (!navMarkEl || !markWrapEl || !backdropEl) {
         finish();
         return;
       }
@@ -133,54 +155,49 @@ export default function Intro() {
           { transform: `translate(${deltaX}px, ${deltaY}px) scale(${scale})` }
         ],
         {
-          duration: 700,
-          easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+          duration: 900,
+          easing: 'cubic-bezier(0.65, 0, 0.35, 1)',
           fill: 'forwards'
         }
       );
       runningAnimationsRef.current.push(flightAnim);
 
-      const overlayAnim = overlayEl.animate(
+      const backdropAnim = backdropEl.animate(
         [
           { opacity: 1 },
           { opacity: 0 }
         ],
         {
-          duration: 700,
+          duration: 900,
           easing: 'ease-out',
           fill: 'forwards'
         }
       );
-      runningAnimationsRef.current.push(overlayAnim);
+      runningAnimationsRef.current.push(backdropAnim);
+
+      flightAnim.onfinish = () => {
+        if (isSkippingRef.current || isDoneRef.current) return;
+        navMarkEl.style.visibility = 'visible';
+        finish();
+
+        const wordmarkEl = document.querySelector('[data-nav-wordmark]');
+        if (wordmarkEl) {
+          const wmAnim = wordmarkEl.animate(
+            [
+              { transform: 'translateX(-8px)', opacity: 0 },
+              { transform: 'translateX(0px)', opacity: 1 }
+            ],
+            {
+              duration: 300,
+              easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+              fill: 'forwards'
+            }
+          );
+          runningAnimationsRef.current.push(wmAnim);
+        }
+      };
     }, 2050);
     timersRef.current.push(tFlight);
-
-    const tWordmark = setTimeout(() => {
-      if (isSkippingRef.current || isDoneRef.current) return;
-
-      const wordmarkEl = document.querySelector('[data-nav-wordmark]');
-      if (wordmarkEl) {
-        const wmAnim = wordmarkEl.animate(
-          [
-            { opacity: 0 },
-            { opacity: 1 }
-          ],
-          {
-            duration: 250,
-            easing: 'ease-out',
-            fill: 'forwards'
-          }
-        );
-        runningAnimationsRef.current.push(wmAnim);
-      }
-    }, 2500);
-    timersRef.current.push(tWordmark);
-
-    const tDone = setTimeout(() => {
-      if (isSkippingRef.current || isDoneRef.current) return;
-      finish();
-    }, 2750);
-    timersRef.current.push(tDone);
 
     const tFailsafe = setTimeout(() => {
       finish();
@@ -206,24 +223,31 @@ export default function Intro() {
   }
 
   return (
-    <div
-      data-intro-overlay
-      className={styles.introOverlay}
-      ref={overlayRef}
-      aria-hidden="true"
-    >
-      {mounted && (
-        <div className={styles.markWrap} ref={markWrapRef}>
-          <LogoMark
-            size={introSize}
-            animate={true}
-            replayOnHover={false}
-            decorative={true}
-            lightOff={isLightOff}
-          />
-        </div>
-      )}
-    </div>
+    <>
+      <div
+        data-intro-overlay
+        className={styles.introBackdrop}
+        ref={backdropRef}
+        aria-hidden="true"
+      />
+      <div
+        data-intro-overlay
+        className={styles.logoLayer}
+        ref={logoLayerRef}
+        aria-hidden="true"
+      >
+        {mounted && (
+          <div className={styles.markWrap} ref={markWrapRef}>
+            <LogoMark
+              size={introSize}
+              animate={true}
+              replayOnHover={false}
+              decorative={true}
+              lightOff={isLightOff}
+            />
+          </div>
+        )}
+      </div>
+    </>
   );
 }
-
