@@ -1,0 +1,338 @@
+.servicesWrapper {
+  height: 380vh;
+  height: 380svh;
+  min-height: 380vh;
+  min-height: 380svh;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: clip;
+}
+.stickyStage {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  min-height: 100vh;
+  min-height: 100svh;
+  width: 100%;
+  overflow: clip;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 76px 24px 24px;
+}
+.servicesContainer {
+  width: 100%;
+  max-width: 1152px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  box-sizing: border-box;
+}
+.leftColumn {
+  flex: 1;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+}
+
+.headerBlock {
+  display: flex;
+  flex-direction: column;
+}
+
+.eyebrow {
+  font-size: 13px;
+  font-weight: 700;
+  color: #2463FF;
+  letter-spacing: 0.14em;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.heading {
+  font-size: 38px;
+  font-weight: 800;
+  color: #091737;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0 0 36px 0;
+}
+.lensListContainer {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.lensFrame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border: 1.5px solid rgba(36, 99, 255, 0.4);
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 14px;
+  box-shadow: 0 6px 24px rgba(9, 23, 55, 0.05), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+  pointer-events: none;
+  z-index: 1;
+  will-change: transform;
+}
+.serviceRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 20px;
+  box-sizing: border-box;
+  cursor: pointer;
+  user-select: none;
+  z-index: 2;
+  border-radius: 12px;
+  will-change: transform, opacity;
+  transition: transform 0.05s linear, opacity 0.05s linear;
+}
+
+.serviceRow:focus-visible {
+  outline: 2px solid #2463FF;
+  outline-offset: 2px;
+}
+.rowMarker {
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+  border-radius: 9px;
+  border: 1px solid rgba(9, 23, 55, 0.08);
+  background-color: rgba(36, 99, 255, 0.06);
+  color: #6F809A;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.rowMarker.rowMarkerFilled {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-white);
+}
+
+.rowLabel {
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  transition: color 0.15s ease, font-weight 0.15s ease;
+}
+.rightColumn {
+  flex-shrink: 0;
+}
+.photoCard {
+  position: relative;
+  width: 440px;
+  height: 550px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 48px rgba(9, 23, 55, 0.12), 0 4px 12px rgba(9, 23, 55, 0.06);
+  background-color: #091737;
+}
+.photosStack {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.photoLayer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  will-change: transform, opacity;
+}
+
+.photoImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  user-select: none;
+  pointer-events: none;
+}
+.photoGlassPanel {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 14px;
+  padding: 18px 20px;
+  box-shadow: 0 8px 30px rgba(9, 23, 55, 0.1);
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr;
+  z-index: 10;
+}
+
+.glassContentItem {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  will-change: transform, opacity;
+}
+
+.glassHeaderRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  will-change: transform, opacity;
+}
+
+.glassIconWrap {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: rgba(36, 99, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.glassTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: #091737;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.glassDesc {
+  font-size: 13px;
+  line-height: 1.55;
+  color: #475569;
+  margin: 0;
+  will-change: transform, opacity;
+}
+@media (prefers-reduced-motion: reduce) {
+  .lensFrame {
+    transition: none !important;
+  }
+  .serviceRow {
+    transform: none !important;
+  }
+  .photoLayer {
+    transform: none !important;
+  }
+  .glassHeaderRow,
+  .glassDesc {
+    transform: none !important;
+  }
+}
+@media (max-width: 899px) {
+  .stickyStage {
+    padding: 68px 12px 16px;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .servicesContainer {
+    flex-direction: column;
+    gap: 12px;
+    max-width: 100%;
+    align-items: center;
+  }
+
+  .leftColumn {
+    display: contents;
+  }
+
+  .headerBlock {
+    order: 1;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    margin-bottom: 4px;
+  }
+
+  .heading {
+    font-size: 22px;
+    margin: 0 0 8px 0;
+    line-height: 1.2;
+  }
+  .rightColumn {
+    order: 2;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .photoCard {
+    width: min(calc(100% - 24px), 380px);
+    height: 48svh;
+    max-height: 380px;
+    border-radius: 14px;
+  }
+
+  .photoGlassPanel {
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    padding: 12px 14px;
+    border-radius: 12px;
+  }
+
+  .glassIconWrap {
+    width: 28px;
+    height: 28px;
+  }
+
+  .glassIconWrap svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .glassTitle {
+    font-size: 15px;
+  }
+
+  .glassDesc {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  .lensListContainer {
+    order: 3;
+    width: min(calc(100% - 24px), 380px);
+    margin: 4px auto 0;
+  }
+
+  .serviceRow {
+    min-height: 44px;
+    padding: 0 12px;
+    gap: 10px;
+  }
+
+  .rowLabel {
+    font-size: 14px;
+    letter-spacing: 0.04em;
+  }
+}
+

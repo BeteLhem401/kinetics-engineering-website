@@ -1,0 +1,564 @@
+.contactSection {
+  position: relative;
+  width: 100%;
+  padding: 100px 24px 120px;
+  box-sizing: border-box;
+  background: linear-gradient(180deg, #E2EFFF 0%, #E8F3FF 50%, #DCEBFA 100%);
+  overflow-x: clip;
+}
+.bgGraphicWrap {
+  position: absolute;
+  right: -80px;
+  bottom: 0;
+  width: 680px;
+  max-width: 55vw;
+  pointer-events: none;
+  opacity: 0.11;
+  mix-blend-mode: multiply;
+  z-index: 1;
+}
+
+.bgGraphic {
+  width: 100%;
+  height: auto;
+  display: block;
+  user-select: none;
+}
+.container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1152px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 56px;
+  align-items: start;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 600ms cubic-bezier(0.22, 1, 0.36, 1),
+              transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+}
+.eyebrow {
+  font-size: 13px;
+  font-weight: 700;
+  color: #2463FF;
+  letter-spacing: 0.14em;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+.heading {
+  font-size: 38px;
+  font-weight: 800;
+  color: #091737;
+  line-height: 1.16;
+  letter-spacing: -0.02em;
+  margin: 0 0 12px 0;
+}
+
+.accentText {
+  color: #2463FF;
+}
+
+.subheading {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #475569;
+  margin: 0 0 36px 0;
+}
+.cardsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.detailCard,
+.detailCardStatic {
+  background: rgba(255, 255, 255, 0.62);
+  backdrop-filter: blur(22px) saturate(140%);
+  -webkit-backdrop-filter: blur(22px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.70);
+  box-shadow: 0 8px 32px rgba(9, 23, 55, 0.08);
+  border-radius: 28px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  text-decoration: none;
+  color: inherit;
+  box-sizing: border-box;
+  min-height: 80px;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .detailCard:hover {
+    transform: translateY(-4px);
+  }
+}
+
+.iconCircle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(36, 99, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cardTextGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.socialRow {
+  --brand-linkedin: #0A66C2;
+  --brand-whatsapp: #25D366;
+  --brand-facebook: #1877F2;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 12px;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.socialButton {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-pill);
+  background: var(--color-white, #FFFFFF);
+  border: var(--glass-light-border);
+  box-shadow: var(--glass-light-shadow);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 250ms cubic-bezier(0.22, 1, 0.36, 1);
+  outline: none;
+}
+
+.socialButton:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  transform: scale(1.06);
+}
+
+.socialButton:focus-visible .socialBrandBg {
+  opacity: 1;
+}
+
+.socialButton:focus-visible .socialIcon {
+  color: var(--color-white, #FFFFFF);
+}
+
+@media (hover: hover) {
+  .socialButton:hover {
+    transform: scale(1.06);
+  }
+
+  .socialButton:hover .socialBrandBg {
+    opacity: 1;
+  }
+
+  .socialButton:hover .socialIcon {
+    color: var(--color-white, #FFFFFF);
+  }
+}
+
+.socialBrandBg {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-pill);
+  opacity: 0;
+  transition: opacity 250ms ease;
+}
+
+.linkedinBg {
+  background-color: var(--brand-linkedin);
+}
+
+.whatsappBg {
+  background-color: var(--brand-whatsapp);
+}
+
+.facebookBg {
+  background-color: var(--brand-facebook);
+}
+
+.socialIcon {
+  position: relative;
+  z-index: 1;
+  color: var(--color-navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 250ms ease;
+}
+
+.cardLabel {
+  font-size: 12px;
+  font-weight: 700;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cardValue {
+  font-size: 16px;
+  font-weight: 700;
+  color: #091737;
+  line-height: 1.35;
+}
+
+.mapsLink {
+  display: inline-flex;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: #2463FF;
+  margin-top: 6px;
+  min-height: 44px;
+  text-decoration: none;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.mapsLink:hover {
+  color: #1A56DB;
+  transform: translateX(2px);
+}
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.formCard {
+  background: rgba(255, 255, 255, 0.62);
+  backdrop-filter: blur(22px) saturate(140%);
+  -webkit-backdrop-filter: blur(22px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.70);
+  box-shadow: 0 8px 32px rgba(9, 23, 55, 0.08);
+  border-radius: 28px;
+  padding: 36px 36px 32px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.formTitle {
+  font-size: 22px;
+  font-weight: 800;
+  color: #091737;
+  letter-spacing: -0.01em;
+  margin: 0 0 20px 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.offlineNotice {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: rgba(3, 50, 156, 0.08);
+  border: 1px solid rgba(3, 50, 156, 0.2);
+  border-radius: 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #03329C;
+  line-height: 1.4;
+}
+
+.offlinePhoneLink {
+  color: #03329C;
+  text-decoration: underline;
+  font-weight: 700;
+  display: inline-block;
+  min-height: 44px;
+  line-height: 44px;
+}
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+}
+
+.fieldLabel {
+  font-size: 13px;
+  font-weight: 700;
+  color: #091737;
+}
+
+.requiredAsterisk {
+  color: #2463FF;
+}
+
+.optionalTag {
+  font-size: 11px;
+  font-weight: 500;
+  color: #64748B;
+  text-transform: none;
+}
+
+.fieldHelper {
+  font-size: 12px;
+  color: #64748B;
+  margin: -6px 0 0 0;
+  line-height: 1.35;
+}
+.inputField,
+.selectField,
+.textareaField {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(9, 23, 55, 0.12);
+  border-radius: 16px;
+  padding: 12px 16px;
+  font-family: inherit;
+  font-size: 14px;
+  color: #091737;
+  outline: none;
+  box-sizing: border-box;
+  min-height: 44px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.inputField::placeholder,
+.textareaField::placeholder {
+  color: #94A3B8;
+}
+
+.inputField:focus,
+.selectField:focus,
+.textareaField:focus {
+  border-color: #2463FF;
+  box-shadow: 0 0 0 3px rgba(36, 99, 255, 0.15);
+}
+
+.inputError {
+  border-color: #DC2626 !important;
+  background: rgba(254, 242, 242, 0.9) !important;
+}
+
+.errorText {
+  font-size: 12px;
+  font-weight: 600;
+  color: #DC2626;
+  margin-top: 2px;
+}
+
+.selectWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.selectField {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  padding-right: 36px;
+}
+
+.selectWrapper::after {
+  content: "";
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid #091737;
+  border-bottom: 2px solid #091737;
+  transform: translateY(-65%) rotate(45deg);
+  pointer-events: none;
+}
+
+.textareaField {
+  resize: vertical;
+  min-height: 96px;
+}
+.submitRow {
+  margin-top: 8px;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: #091737;
+  color: #FFFFFF;
+  text-decoration: none;
+  padding: 10px 14px 10px 24px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  min-height: 46px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.ctaButton:hover:not(:disabled) {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.ctaButton:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.ctaButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.arrowCircle {
+  width: 24px;
+  height: 24px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.ctaButton:hover:not(:disabled) .arrowCircle {
+  transform: translateX(3px);
+}
+.successPanel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 32px 16px;
+}
+
+.successIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.successTitle {
+  font-size: 22px;
+  font-weight: 800;
+  color: #091737;
+  margin: 0 0 8px 0;
+}
+
+.successText {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #475569;
+  max-width: 420px;
+  margin: 0 0 24px 0;
+}
+
+.resetButton {
+  min-height: 44px;
+  padding: 8px 20px;
+  background: rgba(9, 23, 55, 0.06);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #091737;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.resetButton:hover {
+  background: rgba(9, 23, 55, 0.12);
+}
+@media (max-width: 899px) {
+  .contactSection {
+    padding: 72px 20px 80px;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .heading {
+    font-size: 30px;
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .formCard,
+  .detailCard,
+  .detailCardStatic {
+    padding: 24px 20px;
+    border-radius: 24px;
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+  }
+
+  .bgGraphicWrap {
+    width: 320px;
+    opacity: 0.08;
+  }
+}
+
+@media (max-width: 480px) {
+  .heading {
+    font-size: 26px;
+  }
+
+  .ctaButton {
+    width: 100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .container {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .detailCard,
+  .ctaButton,
+  .arrowCircle,
+  .socialButton,
+  .socialBrandBg,
+  .socialIcon {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
