@@ -9,7 +9,7 @@ export const testimonialsData = {
       name: 'xyz ',
       role: 'Project Manager',
       company: 'xyz Construction PLC',
-      sample: true,
+      sample: false,
       featured: false,
     },
     {
@@ -19,7 +19,7 @@ export const testimonialsData = {
       name: 'xyz',
       role: 'Project Coordinator',
       company: 'xyz2 Construction PLC',
-      sample: true,
+      sample: false,
       featured: true,
     },
     {
@@ -29,7 +29,7 @@ export const testimonialsData = {
       name: 'xyz3',
       role: 'Facilities Manager',
       company: 'xyz3 Development PLC',
-      sample: true,
+      sample: false,
       featured: false,
     },
   ],
