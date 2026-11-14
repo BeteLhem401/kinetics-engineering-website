@@ -7,7 +7,7 @@ export const servicesData = {
       label: "MV & LV ELECTRICAL POWER",
       title: "MV & LV Electrical Power",
       text: "Energy-efficient power systems: compact substations, generator sets, switchgear, distribution boards, busway and cable trays.",
-      image: "/images/services/Power.png",
+      image: "/images/services/power.png",
       alt: "Medium and low voltage electrical power systems installation"
     },
     {
